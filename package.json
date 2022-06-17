@@ -1,0 +1,21 @@
+{
+    "dependencies": {
+        "npm-run-all": "^4.1.5"
+    },
+    "scripts": {
+        "start": "pyright && pytest && yarn style",
+        "test": "nodemon -w tests -w fetch_radio_embed -x pytest tests",
+        "pyright": "nodemon -w fetch_radio_embed -w .venv -e .py -x pyright fetch_radio_embed tests",
+        "pytest": "nodemon -w tests -w fetch_radio_embed -e .py -x pytest tests fetch_radio_embed",
+        "style": "nodemon -w fetch_radio_embed -w tests -x \"black tests fetch_radio_embed && python -m flake8\"",
+        "docstyle": "nodemon -w fetch_radio_embed -w tests -x pydocstyle --convention=google tests fetch_radio_embed",
+        "pylint": "nodemon -w fetch_radio_embed -e .py -x pylint fetch_radio_embed",
+        "test:fetch_radio_embed": "nodemon -w tests -e .py -x pytest -k fetch_radio_embed tests",
+        "publish": "poetry build && poetry publish",
+        "black": "black tests fetch_radio_embed",
+        "flake8": "flake8 tests fetch_radio_embed",
+        "pflake8": "pflake8 tests fetch_radio_embed",
+        "pep257": "pep257 tests fetch_radio_embed",
+        "final": "run-s docstyle black flake8 pytest"
+    }
+}
