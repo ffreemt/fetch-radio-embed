@@ -34,13 +34,13 @@ def fetch_radio_embed(
         if debug:
             fetch_radio_embed.resp = resp
     except Exception as exc:
-        logger.exception(exc)
+        logger.error(exc)
         raise
 
     try:
         jdata = resp.json()
     except Exception as exc:
-        logger.exception(exc)
+        logger.error(exc)
         raise
 
     try:
@@ -55,7 +55,7 @@ def fetch_radio_embed(
     try:
         res = resp.json().get("data")[0].get("data")
     except Exception as exc:
-        logger.exception(exc)
+        logger.error(exc)
         raise
 
     return res
